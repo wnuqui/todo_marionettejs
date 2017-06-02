@@ -1,0 +1,90 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Todo App Unit Tests (using Mocha + Chai)</title>
+        <!-- bower:css -->
+        <link rel="stylesheet" href="../../bower_components/mocha/mocha.css" />
+        <!-- endbower -->
+    </head>
+    <body>
+        <div id="mocha"></div>
+
+
+        <div id="gee-app" style="display: none;">
+            loading....
+        </div>
+
+
+        <!-- templates -->
+        <script type="text/template" id="todo-item-view">
+            <input class="todo-title-input" value="<%= title %>"/>
+            <span class="todo-title"><%= title %></span>
+            <a class="delete-todo">Delete</a>
+        </script>
+        <script type="text/template" id="todo-input-item-view">
+            <input id="todo" placeholder="What do you want to do?"/>
+            <button disabled="disabled">Set</button>
+        </script>
+        <script type="text/template" id="layout-view">
+            <ul>
+                <li>
+                    <h3>Todo App!</h3>
+                </li>
+                <li id="todo-input"></li>
+            </ul>
+            <div id="todo-list">
+            </div>
+        </script>
+        <!-- endtemplates -->
+
+
+        <!-- bower:js -->
+        <script src="../../bower_components/jquery/dist/jquery.js"></script>
+        <script src="../../bower_components/underscore/underscore.js"></script>
+        <script src="../../bower_components/backbone/backbone.js"></script>
+        <script src="../../bower_components/backbone.babysitter/lib/backbone.babysitter.js"></script>
+        <script src="../../bower_components/backbone.wreqr/lib/backbone.wreqr.js"></script>
+        <script src="../../bower_components/marionette/lib/core/backbone.marionette.js"></script>
+        <script src="../../bower_components/mocha/mocha.js"></script>
+        <script src="../../bower_components/chai/chai.js"></script>
+        <!-- endbower -->
+
+
+        <!-- Setup Mocha -->
+        <script>
+            mocha.setup('bdd')
+            mocha.reporter('html');
+            var expect = chai.expect;
+        </script>
+
+
+        <!-- util:js -->
+        <script src="../../app/lib/util.js"></script>
+        <!-- endutil -->
+
+
+        <!-- app:js -->
+        <script src="../../app/application.js"></script>
+        <script src="../../app/models/todo.js"></script>
+        <script src="../../app/collections/todos.js"></script>
+        <script src="../../app/views/layout.js"></script>
+        <script src="../../app/views/todo.list.js"></script>
+        <script src="../../app/views/todo.input.js"></script>
+        <script src="../../app/mixins/statuses.js"></script>
+        <script src="../../app/start.js"></script>
+        <!-- endapp -->
+
+
+        <!-- Tests -->
+        <script src="test.js"></script>
+
+
+        <!-- Run Mocha -->
+        <script>
+            // Only tests run in real browser, injected script run if options.run == true
+            if (navigator.userAgent.indexOf('PhantomJS') < 0) {
+                mocha.run();
+            }
+        </script>
+    </body>
+</html>

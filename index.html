@@ -1,0 +1,115 @@
+<!doctype html>
+<html>
+    <head>
+        <title>Todo App</title>
+        <style>
+            body {
+                font-family: "Arial";
+            }
+            ul li {
+                list-style: none;
+            }
+            button {
+                font-weight: bolder;
+            }
+            span.todo-title:hover {
+                font-style: italic;
+            }
+            span.todo-status {
+                text-transform: uppercase;
+                font-size: 12px;
+                font-weight: 700;
+            }
+            a.delete-todo, select.set-status {
+                display: none;
+                text-transform: uppercase;
+                font-size: 12px;
+                font-weight: 700;
+                cursor: default;
+            }
+            li:hover > a.delete-todo, li:hover > select.set-status {
+                display: inline;
+            }
+            li:hover > a.delete-todo {
+                color: #ff0000;
+            }
+            input.todo-title-input {
+                width: 200px;
+                padding: 2px 3px;
+                display: none;
+            }
+            li.editable input.todo-title-input {
+                display: inline;
+            }
+            li.editable span.todo-title, li.editable a.delete-todo {
+                display:none;
+            }
+            input#todo {
+                width: 200px;
+                padding: 2px 3px;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="todo-app">
+            loading....
+        </div>
+
+
+        <!-- bower:js -->
+        <script src="bower_components/jquery/dist/jquery.js"></script>
+        <script src="bower_components/underscore/underscore.js"></script>
+        <script src="bower_components/backbone/backbone.js"></script>
+        <script src="bower_components/backbone.babysitter/lib/backbone.babysitter.js"></script>
+        <script src="bower_components/backbone.wreqr/lib/backbone.wreqr.js"></script>
+        <script src="bower_components/marionette/lib/core/backbone.marionette.js"></script>
+        <!-- endbower -->
+
+
+        <!-- templates -->
+        <script type="text/template" id="todo-item-view">
+            <input class="todo-title-input" value="<%= title %>"/>
+            <span class="todo-status"><%= textStatus %></span>
+            <span class="todo-title"><%= title %></span>
+            <a class="delete-todo">Delete</a>
+            <select class="set-status">
+                <option value="1" <%= status === '1' ? 'selected' : '' %>>New</option>
+                <option value="2" <%= status === '2' ? 'selected' : '' %>>In Progress</option>
+                <option value="3" <%= status === '3' ? 'selected' : '' %>>Stopped</option>
+                <option value="4" <%= status === '4' ? 'selected' : '' %>>Done</option>
+            </select>
+        </script>
+        <script type="text/template" id="todo-input-item-view">
+            <input id="todo" placeholder="What do you want to do?"/>
+            <button disabled="disabled">Set</button>
+        </script>
+        <script type="text/template" id="layout-view">
+            <ul>
+                <li>
+                    <h3>Todo List!</h3>
+                </li>
+                <li id="todo-input"></li>
+            </ul>
+            <div id="todo-list">
+            </div>
+        </script>
+        <!-- endtemplates -->
+
+
+        <!-- util:js -->
+        <script src="app/lib/util.js"></script>
+        <!-- endutil -->
+
+
+        <!-- app:js -->
+        <script src="app/application.js"></script>
+        <script src="app/models/todo.js"></script>
+        <script src="app/collections/todos.js"></script>
+        <script src="app/views/layout.js"></script>
+        <script src="app/views/todo.list.js"></script>
+        <script src="app/views/todo.input.js"></script>
+        <script src="app/mixins/statuses.js"></script>
+        <script src="app/start.js"></script>
+        <!-- endapp -->
+    </body>
+</html>

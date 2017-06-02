@@ -1,0 +1,29 @@
+{
+  "name": "gee",
+  "main": "index.js",
+  "version": "0.0.1",
+  "authors": [
+    "Wilfrido Nuqui <wilfrido.t.nuqui.jr@gmail.com>"
+  ],
+  "description": "gee is a crud app",
+  "keywords": [
+    "crud"
+  ],
+  "license": "PRIVATE",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "marionette": "~2.4.2",
+    "jquery": "^2.1.4"
+  },
+  "devDependencies": {
+    "mocha": "~2.2.5",
+    "chai": "~3.0.0"
+  }
+}
